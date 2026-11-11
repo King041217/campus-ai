@@ -1,0 +1,106 @@
+# =========================================================
+# 校园AI助手平台 - Git 忽略规则
+# 说明：本项目 1581MB，其中代码与文档不到 10MB，
+#      其余全是依赖、模型、Dify 源码与数据库，一律忽略。
+# =========================================================
+
+# ---------- Python 依赖与虚拟环境 ----------
+venv/
+.venv/
+env/
+backend/venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ---------- Node / 前端 ----------
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.vite/
+.cache/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---------- 密钥与本地配置（务必不要提交） ----------
+# 后端 .env 内含 DEEPSEEK / QWEN / DIFY 的 API Key
+.env
+.env.*
+!.env.example
+backend/.env
+dify/docker/.env
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+secrets.json
+credentials.json
+
+# ---------- 运行时数据 / 数据库 ----------
+# campus_ai.db（业务库）、memory.db（会话记忆）、chroma_db（向量库）
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.mdb
+backend/chroma_db/
+backend/uploads/
+storage/
+logs/
+*.log
+
+# ---------- 模型文件（体积大，不随仓库分发） ----------
+# 注意：不要写裸的 models/，否则会误伤 backend/app/models 这类源码目录
+onnx_models/
+*.onnx
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.h5
+*.tflite
+hf_cache/
+.cache/huggingface/
+
+# ---------- Dify 官方源码（自带 .git、docker volumes、.env） ----------
+# 本项目只依赖已部署的 Dify 服务，源码不入库；
+# 若要作为子模块：git submodule add https://github.com/langgenius/dify.git dify
+dify/
+
+# ---------- 开发过程中的临时脚本 ----------
+# _r.py、_fix_all_kb.py 属于本地调试脚本，可自行保留在本地
+backend/_r.py
+backend/_fix_all_kb.py
+temp_fix.py
+fix_*.sql
+
+# ---------- 编辑器 / 操作系统 ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
+
+# ---------- 打包产物 ----------
+*.zip
+*.tar.gz
+*.rar
+*.7z

@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.git
+.gitignore
+.vscode
+*.db-shm
+*.db-wal
+_*.py
+temp_fix.py
+gen_token.py
+fix_*.sql
+fix_*.py
+test_*.py
